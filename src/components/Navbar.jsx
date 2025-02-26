@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Logo } from "../assets/assests";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 const Navbar = ({ className }) => {
   const navigate = useNavigate();
