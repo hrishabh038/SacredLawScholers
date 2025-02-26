@@ -11,7 +11,7 @@ const Navbar = ({ className }) => {
   const [avatarDropDown, setAvatarDropDown] = useState(false);
   return (
     <nav
-      className={twMerge("flex items-center gap-6 justify-between", className)}
+      className={"flex items-center gap-6 justify-between"}
     >
       <img
         src={Logo}

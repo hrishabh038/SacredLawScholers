@@ -72,10 +72,7 @@ const NavLink = ({ link, title }) => {
   }, [pathname, link]);
   return (
     <li
-      className={twMerge(
-        "px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer",
-        active && "font-bold"
-      )}
+      className={`px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer ${active && "font-bold"}`}
       onClick={() => navigate(link)}
     >
       {title}

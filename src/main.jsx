@@ -10,7 +10,8 @@ const Main = () => {
     <BrowserRouter>
       <StrictMode>
         <div className="px-4 h-[70px] flex items-center justify-center w-full fixed bg-white border-b border-neutral-200 z-50 shadow-xs">
-          <Navbar className={"w-full lg:w-[1000px]"} />
+          <div className={"w-full lg:w-[1000px]"}><Navbar  /></div>
+          
         </div>
         <App />
       </StrictMode>
