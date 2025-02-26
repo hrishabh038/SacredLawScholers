@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Logo } from "../assets/assests";
 import { FaFacebookSquare, FaLinkedin, FaWhatsappSquare } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
 
 const Footer = () => {
   return (

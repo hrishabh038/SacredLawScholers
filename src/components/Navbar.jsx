@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { twMerge } from "tailwind-merge";
 import { Logo } from "../assets/assests";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useLocation, useNavigate } from "react-router-dom";
