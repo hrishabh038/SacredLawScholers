@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Logo } from "../assets/assests";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useLocation, useNavigate } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
 
-const Navbar = ({ className }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [dropDown, setDropDown] = useState(false);
   const [avatarDropDown, setAvatarDropDown] = useState(false);
   return (
-    <nav
-      className={"flex items-center gap-6 justify-between"}
-    >
+    <nav className={"flex items-center gap-6 justify-between"}>
       <img
         src={Logo}
         className="w-[150px] md:w-[170px]"
@@ -43,10 +40,7 @@ const Navbar = ({ className }) => {
             {avatarDropDown && (
               <ul className="absolute p-4 border border-neutral-200 bg-white shadow rounded mt-[10px] right-0 w-[250px]">
                 <NavLink link={"/profile/hrishabh038"} title={"Profile"} />
-                <NavLink
-                        link={"/create-blog"}
-                        title={"Create Blog"}
-                      />
+                <NavLink link={"/create-blog"} title={"Create Blog"} />
                 <div className="w-full h-[1px] bg-neutral-200 my-2"></div>
                 <div className="px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer">
                   Logout
@@ -87,10 +81,7 @@ const Navbar = ({ className }) => {
                         link={"/profile/hrishabh038"}
                         title={"Profile"}
                       />
-                      <NavLink
-                        link={"/create-blog"}
-                        title={"Create Blog"}
-                      />
+                      <NavLink link={"/create-blog"} title={"Create Blog"} />
                       <div className="w-full h-[1px] bg-neutral-200 my-2"></div>
                       <div className="px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer">
                         Logout
@@ -117,10 +108,9 @@ const NavLink = ({ link, title }) => {
   }, [pathname, link]);
   return (
     <li
-      className={twMerge(
-        "px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer",
+      className={`px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer ${
         active && "font-bold"
-      )}
+      }`}
       onClick={() => navigate(link)}
     >
       {title}
