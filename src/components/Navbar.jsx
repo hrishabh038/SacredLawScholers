@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Logo } from "../assets/assests";
-import { FaFacebookSquare, FaLinkedin, FaWhatsappSquare } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useLocation, useNavigate } from "react-router-dom";
 
