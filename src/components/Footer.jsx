@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Logo } from "../assets/assests";
-import { FaFacebookSquare, FaLinkedin, FaWhatsappSquare } from "react-icons/fa";
+import { FaFacebookSquare, FaLinkedin, FaWhatsappSquare, FaInstagramSquare } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -54,6 +54,9 @@ const Footer = () => {
           </li>
           <li>
             <FaLinkedin className="text-[#087BB7]" />
+          </li>
+          <li>
+            <FaInstagramSquare className="text-[#C13584]" />
           </li>
         </ul>
       </div>
