@@ -34,7 +34,7 @@ const HamburgerMenu = () => {
         onClick={() => setDropDown(!dropDown)}
       />
       {dropDown && (
-        <div className="p-4 absolute w-[300px] bg-white right-0 mt-2 rounded shadow border border-neutral-200 flex flex-col gap-2">
+        <div className="p-4 absolute w-[300px] bg-white right-0 mt-2 rounded shadow border border-gray-200 flex flex-col gap-2">
           <MainMenu hamburgarMenu={true} />
           {/* <LoginRegister hamburgarMenu={true} /> */}
           <ProfileAvatar />
@@ -70,7 +70,7 @@ const MainMenu = ({ hamburgarMenu }) => {
           <NavLink title={"About"} link={"/about"} />
           <NavLink title={"Contact"} link={"/contact"} />
         </ul>
-        <div className="w-full h-[1px] bg-neutral-200 my-1"></div>
+        <div className="w-full h-[1px] bg-gray-200 my-1"></div>
       </>
     );
   }
@@ -91,18 +91,18 @@ const ProfileAvatar = ({ className }) => {
         className="flex items-center gap-2 cursor-pointer "
         onClick={() => setAvatarDropDown(!avatarDropDown)}
       >
-        <div className="text-sm bg-neutral-300 w-[35px] h-[35px] rounded-full border border-neutral-200 text-white flex items-center justify-center">
+        <div className="text-sm bg-gray-200 w-[35px] h-[35px] rounded-full text-gray-500 flex items-center justify-center">
           HJ
         </div>
         <div>Hrishabh Jain</div>
       </div>
       {avatarDropDown && (
-        <ul className="absolute p-4 border border-neutral-200 bg-white shadow rounded mt-2 right-0 w-[300px] flex flex-col gap-2">
+        <ul className="absolute p-4 border border-gray-200 bg-white shadow rounded mt-2 right-0 w-[300px] flex flex-col gap-2">
           <NavLink link={"/profile/hrishabh038"} title={"Profile"} />
           <NavLink link={"/create-blog"} title={"Create Blog"} />
           <AdminMenu />
-          <div className="w-full h-[1px] bg-neutral-200 my-1"></div>
-          <div className="px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer">
+          <div className="w-full h-[1px] bg-gray-200 my-1"></div>
+          <div className="px-2 hover:bg-gray-200/60 border border-transparent hover:border-gray-200 rounded cursor-pointer">
             Logout
           </div>
         </ul>
@@ -114,8 +114,8 @@ const ProfileAvatar = ({ className }) => {
 const AdminMenu = () => {
   return (
     <>
-      <div className="w-full h-[1px] bg-neutral-200 my-1"></div>
-      <NavLink link={"/view-users"} title={"View Users"} />
+      <div className="w-full h-[1px] bg-gray-200 my-1"></div>
+      <NavLink link={"/user-management"} title={"User Management"} />
       <NavLink link={"/approve-blogs"} title={"Approve Blogs"} />
     </>
   );
@@ -131,8 +131,8 @@ const NavLink = ({ link, title }) => {
   }, [pathname, link]);
   return (
     <li
-      className={`px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer ${
-        active && "font-bold"
+      className={`px-2 hover:bg-gray-200/60 border border-transparent hover:border-gray-200 rounded cursor-pointer ${
+        active && "font-semibold"
       }`}
       onClick={() => navigate(link)}
     >

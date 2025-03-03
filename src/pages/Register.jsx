@@ -4,7 +4,7 @@ import { Inputarea, Textarea } from '../components/components';
 const Register = () => {
   return (
     <div className="flex items-center justify-center">
-      <div className="w-full sm:w-[400px] border border-neutral-300 rounded p-4">
+      <div className="w-full sm:w-[400px] border border-gray-300 rounded p-4">
         <div>
           <h2 className="text-3xl font-bold text-center text-gray-800">
             Create an Account

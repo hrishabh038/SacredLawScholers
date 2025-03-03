@@ -65,7 +65,7 @@ const CreateBlog = () => {
           />
         ))}
         <div
-          className="w-full p-4 text-sm font-semibold text-white bg-neutral-600 rounded-lg hover:bg-neutral-700 transition duration-300 text-center cursor-pointer"
+          className="w-full p-4 text-sm font-semibold text-white bg-gray-600 rounded-lg hover:bg-gray-700 transition duration-300 text-center cursor-pointer"
           onClick={handleAddParagraph}
         >
           Add paragraph
@@ -85,8 +85,8 @@ const CreateBlog = () => {
 
 const Paragraph = ({ index, heading, context, onParagraphChange }) => {
   return (
-    <div className="border rounded border-neutral-200 p-4 flex flex-col gap-4">
-      <h1 className="font-bold text-neutral-400 mb-4">Para: {index + 1}</h1>
+    <div className="border rounded border-gray-200 p-4 flex flex-col gap-4">
+      <h1 className="font-bold text-gray-400 mb-4">Para: {index + 1}</h1>
       <Inputarea
         label={"Heading"}
         placeholder={"Create para Heading"}

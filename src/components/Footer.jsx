@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Logo } from "../assets/assests";
-import { FaFacebookSquare, FaLinkedin, FaWhatsappSquare, FaInstagramSquare } from "react-icons/fa";
+import {
+  FaFacebookSquare,
+  FaLinkedin,
+  FaWhatsappSquare,
+  FaInstagramSquare,
+} from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -10,7 +15,7 @@ const Footer = () => {
         <div className="w-full md:w-[500px] flex flex-col gap-6">
           <img
             src={Logo}
-            className="bg-blend-multiply w-[150px] bg-neutral-200"
+            className="bg-blend-multiply w-[150px] bg-gray-200"
           />
           <p className="text-[16px]">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -23,16 +28,16 @@ const Footer = () => {
             <NavLink title={"Contact"} link={"/contact"} />
           </ul>
         </div>
-        <div className="p-4 bg-white rounded w-full md:w-[300px] flex flex-col gap-6 border border-neutral-200 shadow-xs">
+        <div className="p-4 bg-white rounded w-full md:w-[300px] flex flex-col gap-6 border border-gray-200 shadow-xs">
           <div className="flex flex-col text-center">
             <p className="font-bold">Recent Judgements</p>
-            <p className="text-neutral-400 text-sm">
+            <p className="text-gray-400 text-sm">
               Get all info about recent judgement here.
             </p>
           </div>
           <div className="flex flex-col gap-2">
             <input
-              className="outline-none rounded border border-neutral-300 w-full py-2 px-4"
+              className="outline-none rounded border border-gray-300 w-full py-2 px-4"
               placeholder="Your Email"
             />
             <div className="bg-blue-500 hover:bg-blue-700 cursor-pointer text-white rounded text-center font-bold py-2 px-4">
@@ -41,8 +46,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-neutral-200 pt-[40px] flex flex-col md:flex-row gap-5 items-center justify-between">
-        <p className=" text-sm text-neutral-400">
+      <div className="border-t border-gray-200 pt-[40px] flex flex-col md:flex-row gap-5 items-center justify-between">
+        <p className=" text-sm text-gray-400">
           Copyright © 2025 Sacred Law Scholers.
         </p>
         <ul className="flex items-center gap-2 text-3xl">
@@ -74,7 +79,9 @@ const NavLink = ({ link, title }) => {
   }, [pathname, link]);
   return (
     <li
-      className={`px-2 hover:bg-neutral-200/60 border border-transparent hover:border-neutral-200 rounded cursor-pointer ${active && "font-bold"}`}
+      className={`px-2 hover:bg-gray-200/60 border border-transparent hover:border-gray-200 rounded cursor-pointer ${
+        active && "font-bold"
+      }`}
       onClick={() => navigate(link)}
     >
       {title}

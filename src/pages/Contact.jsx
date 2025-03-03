@@ -12,11 +12,11 @@ const Contact = () => {
 
   return (
     <div className="">
-      <h1 className="text-xl sm:text-3xl font-bold text-center text-neutral-800 mb-8">
+      <h1 className="text-xl sm:text-3xl font-bold text-center text-gray-800 mb-8">
         Contact Us
       </h1>
       <p
-        className="text-base sm:text-lg text-neutral-600 text-center mb-8"
+        className="text-base sm:text-lg text-gray-600 text-center mb-8"
         style={paragraphStyle}
       >
         Have questions or need legal insights? Reach out to us! We're here to
@@ -44,18 +44,18 @@ const Contact = () => {
         </div>
       </form>
 
-      <div className="w-full h-[1px] bg-neutral-200 my-[50px]"></div>
+      <div className="w-full h-[1px] bg-gray-200 my-[50px]"></div>
 
       <div>
-        <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           Contact Information
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-200 bg-neutral-100">
-            <h3 className="text-xl font-semibold text-neutral-800">
+          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 bg-gray-100">
+            <h3 className="text-xl font-semibold text-gray-800">
               Office Address
             </h3>
-            <p className="text-base text-neutral-600 mt-2">
+            <p className="text-base text-gray-600 mt-2">
               123 Legal Street, Suite 456
               <br />
               Law City, LC 7890
@@ -63,11 +63,11 @@ const Contact = () => {
               Country
             </p>
           </div>
-          <div className="bg-neutral-50 p-4 rounded-lg border border-neutral-200 bg-neutral-100">
-            <h3 className="text-xl font-semibold text-neutral-800">
+          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 bg-gray-100">
+            <h3 className="text-xl font-semibold text-gray-800">
               Contact Details
             </h3>
-            <p className="text-base text-neutral-600 mt-2">
+            <p className="text-base text-gray-600 mt-2">
               <strong>Phone:</strong> +1 (123) 456-7890
               <br />
               <strong>Email:</strong> info@legalinsights.com
