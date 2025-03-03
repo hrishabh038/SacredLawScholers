@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import useAllUsers from "../hooks/useAllUsers";
+import {useGetAllUsers} from "../hooks/hooks";
 import { Loading } from "../components/components";
 import { Link, useNavigate } from "react-router-dom";
 
 const UserManagement = () => {
   const [userUpdated, setUserUpdated] = useState(false);
-  const [users, loading, error] = useAllUsers(userUpdated);
+  const [users, loading, error] = useGetAllUsers(userUpdated);
 
   return (
     <div className="max-w-4xl mx-auto">

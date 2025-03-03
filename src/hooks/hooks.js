@@ -1,2 +1,3 @@
-export {default as useAllUsers} from "./useAllUsers"
-export {default as useUser} from "./useUser"
+export {default as useGetAllUsers} from "./user/useGetAllUsers"
+export {default as useGetUser} from "./user/useGetUser"
+export {default as usePostUser} from "./user/usePostUser"

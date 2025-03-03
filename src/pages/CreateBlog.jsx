@@ -65,7 +65,7 @@ const CreateBlog = () => {
           />
         ))}
         <div
-          className="w-full p-4 text-sm font-semibold text-white bg-gray-600 rounded-lg hover:bg-gray-700 transition duration-300 text-center cursor-pointer"
+          className="w-full p-4 text-sm font-semibold text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition duration-300 text-center cursor-pointer"
           onClick={handleAddParagraph}
         >
           Add paragraph

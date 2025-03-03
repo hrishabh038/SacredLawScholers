@@ -1,7 +1,16 @@
-import React from "react";
-import { Inputarea } from "../components/components";
+import React, { useState } from "react";
+import { Inputarea, Loading } from "../components/components";
+import BaseAPI from "../helpers/BaseAPI";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+  });
+
+
   return (
     <div className="flex items-center justify-center">
       <div className="w-full sm:w-[400px] border border-gray-300 rounded p-4">
@@ -15,47 +24,36 @@ const Login = () => {
         </div>
 
         {/* Login Form */}
-        <form className="mt-8 space-y-4">
-          <Inputarea label={"Username"} placeholder={"jhonDoe"} required />
+        <div className="mt-8 space-y-4">
+          <Inputarea
+            label={"Username"}
+            placeholder={"jhonDoe"}
+            value={data.username}
+            onChange={(e) => setData({ ...data, username: e.target.value })}
+            required
+          />
           <Inputarea
             type={"Password"}
             label={"password"}
             placeholder={"*************"}
+            value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
             required
           />
 
-          {/* <div className="flex items-center justify-between">
-            <div className="flex items-center">
-               <input
-                 type="checkbox"
-                 id="remember-me"
-                 name="remember-me"
-                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-               />
-               <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
-                 Remember me
-               </label>
-             </div>
-
-            <div className="text-sm">
-              <a
-                href="/forgot-password"
-                className="font-medium text-blue-600 hover:text-blue-800"
-              >
-                Forgot your password?
-              </a>
-            </div>
-          </div> */}
-
           <div>
-            <button
-              type="submit"
-              className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              Sign In
-            </button>
+            {loading ? (
+              <Loading />
+            ) : (
+              <button
+                onClick={login}
+                className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                Login
+              </button>
+            )}
           </div>
-        </form>
+        </div>
 
         {/* Sign Up Link */}
         <div className="mt-6 text-center">

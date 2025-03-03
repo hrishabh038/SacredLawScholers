@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import BaseAPI from "../helpers/BaseAPI";
+import BaseAPI from "../../helpers/BaseAPI";
 import toast from "react-hot-toast";
 
-const useAllUsers = (usersUpdated) => {
+const useGetAllUsers = (usersUpdated) => {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,6 +13,7 @@ const useAllUsers = (usersUpdated) => {
     try {
       const response = await BaseAPI.get(`/user/`);
       setUsers(response.data.data);
+      toast.success(response.data.message);
     } catch (error) {
       setError(error);
       toast.error("Failed to fetch users.");
@@ -28,4 +29,4 @@ const useAllUsers = (usersUpdated) => {
   return [ users, loading, error ];
 };
 
-export default useAllUsers;
+export default useGetAllUsers;

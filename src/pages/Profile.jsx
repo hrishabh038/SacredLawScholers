@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { CardsContainer, PageLoading } from "../components/components";
 import dataPopulaiton from "../metadata";
 import { useParams } from "react-router-dom";
-import { useUser } from "../hooks/hooks";
+import { useGetUser } from "../hooks/hooks";
 
 const Profile = () => {
   const { username } = useParams();
-  const [user, loading, error] = useUser({ username: username });
+  const [user, loading, error] = useGetUser({ username: username });
   const [activeTab, setActiveTab] = useState("published"); // State for active tab
 
   // Button handlers
@@ -19,9 +19,7 @@ const Profile = () => {
   };
 
   if (loading) {
-    return (
-     <PageLoading />
-    );
+    return <PageLoading />;
   }
 
   if (error) {
@@ -33,113 +31,54 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full">
-      {/* Profile Header */}
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-4 border border-gray-200 p-4 w-fit">
-        {/* Avatar, Name, and Email */}
-        <div className="flex flex-col items-center space-y-4">
-          {/* Profile Picture */}
-          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
-            {user?.profile_picture ? (
-              <img
-                src={user.profile_picture}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-3xl text-gray-500">
-                {user?.full_name?.charAt(0).toUpperCase()}
-              </span>
-            )}
-          </div>
-
-          {/* Name and Email */}
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900">
-              {user?.full_name}
-            </h1>
-            <p className="text-sm text-gray-600">{user?.email_address}</p>
-          </div>
-        </div>
-
-        {/* User Details */}
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <h1 className="font-semibold text-2xl">@{user?.username}</h1>
-          {/* Stats */}
-          <div className="flex space-x-8">
-            <div className="text-center">
-              <span className="text-xl font-bold text-gray-900">24</span>
-              <p className="text-sm text-gray-600">Published Blogs</p>
+    <div className=" flex flex-col gap-8 w-full">
+      <div className="flex flex-col items-center md:items-start  gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="rounded-full border border-gray-200 w-20 h-20 bg-gray-100 flex items-center justify-center text-gray-500 font-semibold text-lg">
+              AM
             </div>
-            <div className="text-center">
-              <span className="text-xl font-bold text-gray-900">3</span>
-              <p className="text-sm text-gray-600">Under Approval Blogs</p>
+            <div className="text-sm flex flex-col items-center md:items-start gap-1">
+              <p className="font-semibold text-gray-500">@{user?.username}</p>
+              <p className="text-xl md:text-2xl font-bold">{user?.full_name}</p>
+              <p className="font-semibold text-gray-400">{user?.email_address}</p>
             </div>
           </div>
 
-          {/* Bio */}
-          {user?.bio && (
-            <p className="text-gray-600">{user.bio}</p>
-          )}
+          <div className="bg-gray-200 h-[1px] md:h-[100px] w-[100px] md:w-[1px]"></div>
 
-          {/* Edit and Delete Buttons */}
-          <div className="flex space-x-4">
-            <button
-              onClick={handleEditProfile}
-              className="px-6 py-2 text-sm font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition duration-300 cursor-pointer"
-            >
-              Edit Profile
-            </button>
-            <button
-              onClick={handleDeleteAccount}
-              className="px-6 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition duration-300 cursor-pointer"
-            >
-              Delete Account
-            </button>
+          <div className="flex gap-4 ">
+            <div className="flex flex-col items-center">
+              <p className="text-3xl">26</p>
+              <p className="text-sm text-gray-400">Published Blogs</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-3xl">13</p>
+              <p className="text-sm text-gray-400">Under Review Blogs</p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-lg text-gray-600 text-center md:text-start">
+          {user?.bio}
+        </p>
+
+        <div className="w-fit flex gap-2">
+          <div className=" text-sm px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-700 cursor-pointer">
+            Edit Profile
+          </div>
+          <div className=" text-sm px-2 py-1 rounded bg-red-500 text-white hover:bg-red -700 cursor-pointer">
+            Delete Account
           </div>
         </div>
       </div>
-
-      {/* Content Tabs */}
-      <div className="flex justify-center space-x-6 bg-gray-100 my-10 w-full">
-        <button
-          onClick={() => setActiveTab("published")}
-          className={`py-2 text-sm font-semibold ${
-            activeTab === "published"
-              ? "text-blue-500 border-b-2 border-blue-500"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-        >
-          Published Blogs
-        </button>
-        <button
-          onClick={() => setActiveTab("pending")}
-          className={`py-2 text-sm font-semibold ${
-            activeTab === "pending"
-              ? "text-blue-500 border-b-2 border-blue-500"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-        >
-          Under Approval Blogs
-        </button>
+      <div className="border-y border-gray-200 flex items-center justify-center gap-4 p-2 text-gray-500">
+        <div className="cursor-pointer text-black font-semibold">Published Blogs</div>
+        <div className="cursor-pointer hover:text-black">
+          Under Review Blogs
+        </div>
       </div>
-
-      {/* Content Section */}
-      <div className="mt-10">
-        {activeTab === "published" ? (
-          <CardsContainer
-            blogs={dataPopulaiton.blogPosts.filter(
-              (blog) => blog.status === "approved"
-            )}
-          />
-        ) : (
-          <CardsContainer
-            blogs={dataPopulaiton.blogPosts.filter(
-              (blog) => blog.status === "pending"
-            )}
-          />
-        )}
-      </div>
+      <CardsContainer blogs={dataPopulaiton.blogPosts} />
     </div>
   );
 };

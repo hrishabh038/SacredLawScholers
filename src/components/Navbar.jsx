@@ -13,14 +13,9 @@ const Navbar = () => {
         className="w-[150px] md:w-[170px]"
         onClick={() => navigate("/")}
       />
-      {!pathname.startsWith("/auth") && (
-        <>
-          <MainMenu />
-          {/* <LoginRegister /> */}
-          <ProfileAvatar className={"hidden sm:block"} />
-          <HamburgerMenu />
-        </>
-      )}
+      <MainMenu />
+      <ProfileAvatar className={"hidden sm:block"} />
+      <HamburgerMenu />
     </nav>
   );
 };
@@ -91,7 +86,7 @@ const ProfileAvatar = ({ className }) => {
         className="flex items-center gap-2 cursor-pointer "
         onClick={() => setAvatarDropDown(!avatarDropDown)}
       >
-        <div className="text-sm bg-gray-200 w-[35px] h-[35px] rounded-full text-gray-500 flex items-center justify-center">
+        <div className="text-sm bg-gray-100 border border-gray-200 w-[35px] h-[35px] rounded-full text-gray-500 flex items-center justify-center">
           HJ
         </div>
         <div>Hrishabh Jain</div>
