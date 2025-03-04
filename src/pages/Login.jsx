@@ -13,7 +13,7 @@ const Login = () => {
 
   const { token, loading, login } = useAuth();
 
-  if(token) return <Navigate to={"/"} />
+  if (token) return <Navigate to={"/"} />;
 
   return (
     <div className="flex items-center justify-center">
@@ -46,16 +46,15 @@ const Login = () => {
           />
 
           <div>
-            {loading ? (
-              <Loading />
-            ) : (
-              <button
-                onClick={() => login(data)}
-                className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                Login
-              </button>
-            )}
+            <button
+              onClick={() => login(data)}
+              disabled={loading}
+              className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+             {
+              loading ? "Logging in..." : "Login"
+            }
+            </button>
           </div>
         </div>
 

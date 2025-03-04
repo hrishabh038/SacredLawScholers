@@ -105,7 +105,6 @@ const ProfileAvatar = ({ className }) => {
   const [avatarDropDown, setAvatarDropDown] = useState(false);
   const [user, loading, error] = useGetUser({ username: username });
   const dropdownRef = useRef(null);
-  const nameArr = user?.full_name.split("");
   const isAdmin = user?.role === "admin";
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

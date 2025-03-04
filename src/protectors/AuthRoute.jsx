@@ -6,9 +6,6 @@ const AuthRoute = ({ children }) => {
   const { token } = useAuth();
   const { pathname } = useLocation();
 
-  console.log("Current Pathname:", pathname);
-  console.log("Token:", token);
-
   // Redirect to login if no token is found
   if (!token) {
     console.log("No token found, redirecting to login...");

@@ -5,7 +5,7 @@ import { useLocation, useParams } from "react-router-dom";
 
 const useGetUser = ({username}) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   async function fetchUser() {

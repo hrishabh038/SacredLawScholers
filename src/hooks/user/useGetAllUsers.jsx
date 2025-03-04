@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const useGetAllUsers = (usersUpdated) => {
   const [users, setUsers] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   async function fetchUsers() {

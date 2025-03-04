@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import { CardsContainer, PageLoading } from "../components/components";
 import dataPopulaiton from "../metadata";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useGetUser } from "../hooks/hooks";
+import { useAuth } from "../contexts/AuthContextProvider";
 
 const Profile = () => {
-  const { username } = useParams();
-  const [user, loading, error] = useGetUser({ username: username });
+  const { pathname } = useLocation();
+  const { username } = useAuth();
+  const [user, loading, error] = useGetUser({
+    username: pathname.split("/")[2],
+  });
   const [activeTab, setActiveTab] = useState("published"); // State for active tab
-
-  // Button handlers
-  const handleEditProfile = () => {
-    alert("Edit profile clicked!");
-  };
-
-  const handleDeleteAccount = () => {
-    alert("Delete account clicked!");
-  };
+  const isCurrentUser = user?.username === username;
 
   if (loading) {
     return <PageLoading />;
@@ -41,7 +37,9 @@ const Profile = () => {
             <div className="text-sm flex flex-col items-center md:items-start gap-1">
               <p className="font-semibold text-gray-500">@{user?.username}</p>
               <p className="text-xl md:text-2xl font-bold">{user?.full_name}</p>
-              <p className="font-semibold text-gray-400">{user?.email_address}</p>
+              <p className="font-semibold text-gray-400">
+                {user?.email_address}
+              </p>
             </div>
           </div>
 
@@ -63,17 +61,21 @@ const Profile = () => {
           {user?.bio}
         </p>
 
-        <div className="w-fit flex gap-2">
-          <div className=" text-sm px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-700 cursor-pointer">
-            Edit Profile
+        {isCurrentUser ? (
+          <div className="w-fit flex gap-2">
+            {/* <div className=" text-sm px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-700 cursor-pointer">
+        Edit Profile
+      </div> */}
+            <div className=" text-sm px-2 py-1 rounded bg-red-500 text-white hover:bg-red -700 cursor-pointer">
+              Delete Account
+            </div>
           </div>
-          <div className=" text-sm px-2 py-1 rounded bg-red-500 text-white hover:bg-red -700 cursor-pointer">
-            Delete Account
-          </div>
-        </div>
+        ) : null}
       </div>
       <div className="border-y border-gray-200 flex items-center justify-center gap-4 p-2 text-gray-500">
-        <div className="cursor-pointer text-black font-semibold">Published Blogs</div>
+        <div className="cursor-pointer text-black font-semibold">
+          Published Blogs
+        </div>
         <div className="cursor-pointer hover:text-black">
           Under Review Blogs
         </div>

@@ -15,7 +15,7 @@ const Register = () => {
 
   const [user, loading, error, postUser] = usePostUser();
 
-  const { token, loading, login } = useAuth();
+  const { token } = useAuth();
 
   if (token) return <Navigate to={"/"} />;
 
@@ -83,16 +83,15 @@ const Register = () => {
           />
 
           <div>
-            {loading ? (
-              <Loading />
-            ) : (
-              <button
+          <button
                 onClick={handleSubmit}
+                disabled={loading}
                 className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
               >
-                Sign Up
+                {
+                  loading? "Registering..." : "Register"
+                }
               </button>
-            )}
           </div>
         </form>
 
