@@ -1,10 +1,13 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer, PageLoading } from "./components/components";
+import AuthRoute from "./protectors/AuthRoute";
+import AdminRoute from "./protectors/AdminRoute";
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const NotAuthorised = lazy(() => import("./pages/NotAuthorised"));
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -23,6 +26,7 @@ function App() {
           <Suspense fallback={<PageLoading />}>
             <Routes>
               <Route path="*" element={<NotFound />} />
+              <Route path="/not-authorized" element={<NotAuthorised />} />
               <Route path="/auth/login" element={<Login />} />
               <Route path="/auth/register" element={<Register />} />
               <Route path="/" element={<Home />} />
@@ -30,9 +34,34 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog/:id" element={<Blog />} />
               <Route path="/profile/:username" element={<Profile />} />
-              <Route path="/create-blog" element={<CreateBlog />} />
-              <Route path="/user-management" element={<UserManagement />} />
-              <Route path="/approve-blogs" element={<ApproveBlogs />} />
+              <Route
+                path="/create-blog"
+                element={
+                  <AuthRoute> 
+                    <CreateBlog />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/user-management"
+                element={
+                  <AuthRoute>
+                    <AdminRoute>
+                      <UserManagement />
+                    </AdminRoute>
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path="/approve-blogs"
+                element={
+                  <AuthRoute>
+                    <AdminRoute>
+                      <ApproveBlogs />
+                    </AdminRoute>
+                  </AuthRoute>
+                }
+              />
             </Routes>
           </Suspense>
         </div>

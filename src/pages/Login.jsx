@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Inputarea, Loading } from "../components/components";
 import BaseAPI from "../helpers/BaseAPI";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useAuth } from "../contexts/AuthContextProvider";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -10,6 +11,9 @@ const Login = () => {
     password: "",
   });
 
+  const { token, loading, login } = useAuth();
+
+  if(token) return <Navigate to={"/"} />
 
   return (
     <div className="flex items-center justify-center">
@@ -46,7 +50,7 @@ const Login = () => {
               <Loading />
             ) : (
               <button
-                onClick={login}
+                onClick={() => login(data)}
                 className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 Login

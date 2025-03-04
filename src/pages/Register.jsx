@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Inputarea, Loading, Textarea } from "../components/components";
 import { usePostUser } from "../hooks/hooks";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContextProvider";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -12,6 +14,10 @@ const Register = () => {
   });
 
   const [user, loading, error, postUser] = usePostUser();
+
+  const { token, loading, login } = useAuth();
+
+  if (token) return <Navigate to={"/"} />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
